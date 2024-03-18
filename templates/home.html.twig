@@ -1,0 +1,64 @@
+{% extends "layout.html.twig" %}
+
+{% block header %}
+<h1>THE LIGUE</h1>
+<nav>
+  <ul>
+    <li>LES TEAMS</li>
+    <li>LES PLAYERS</li>
+    <li>LES MATCHS</li>
+  </ul>
+</nav>
+    
+{% endblock %}
+
+{% block main %}
+    <section class ="firstSection">
+      <h2>TOUT SUR LA LEAGUE</h2>
+      <p>Les players, les teams et l'actu des matchs</p>
+    </section>
+    <section class="secondSection">
+      <h3>LA TEAM A LA UNE</h3>
+      {% if team %}
+      <div class = "secondSection_div">
+        <div class = "secondSection_divTwo">
+          <img src="{{ team[1].url}}" alt="{{ team[1].alt}}">
+        </div>
+        <article>
+          <h4>{{ team[0].name}}</h4>
+          <p class = "one">Les players</p>
+      {% endif %}
+          <ul>
+            {% for player in players[0]  %}
+            <li>
+              <img src="{{player[1].url}}" alt="{{player[1].alt}}">
+              <p class = "two">{{player[0].nickname}}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </article>
+      </div>
+    </section>
+
+        
+        <h3>LES PLAYERS A LA UNE</h3>
+        <ul>
+          {% for player in playersRand[0]  %}
+          <li>
+            <img src="{{player[1].url}}" alt="{{player[1].alt}}">
+            <p>{{player[0].nickname}}</p>
+            
+          </li>
+          {% endfor %}
+      </ul>
+      <h4>LE DERNIER MATCH</h4>
+      {% if latestGame %}
+      <h4>{{latestGame.name}}</h4>
+      <p>{{latestGame.date}}</p>
+      <img src="{{ team1Logo.url }}" alt="{{ team1Logo.alt }}">
+      <img src="{{ team2Logo.url }}" alt="{{ team2Logo.alt }}">
+  {% endif %}
+        
+   
+   
+{% endblock %}
